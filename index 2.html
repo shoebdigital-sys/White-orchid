@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White Orchid — Unisex Salon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --paper:#F6F9F4;
+    --paper-deep:#EDF3E9;
+    --forest:#1F4A38;
+    --forest-soft:#2E5E48;
+    --forest-pale:#E4EEE3;
+    --gold:#D9B872;
+    --gold-deep:#A9812F;
+    --ink:#1C241D;
+    --ink-soft:#4C5750;
+    --line:rgba(31,74,56,0.14);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--white);color:var(--ink);
+    font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;margin:0;}
+  .eyebrow{
+    font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--gold-deep);
+  }
+  .eyebrow.on-dark{color:var(--gold);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:20px;font-weight:500;color:var(--forest);}
+  .brand svg{width:24px;height:24px;color:var(--forest);}
+  nav ul{list-style:none;display:flex;gap:34px;margin:0;padding:0;}
+  nav ul a{font-size:13px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--ink);position:relative;padding-bottom:4px;}
+  nav ul a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold-deep);transition:width .3s ease;}
+  nav ul a:hover::after{width:100%;}
+  .nav-cta{font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;background:var(--forest);color:var(--white);padding:11px 22px;border-radius:3px;transition:background .3s ease;}
+  .nav-cta:hover{background:var(--gold-deep);}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:4px;}
+  .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--forest);margin:5px 0;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;background:var(--paper);padding:156px 0 88px;overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1fr 0.92fr;gap:52px;align-items:center;}
+  .hero h1{font-size:clamp(40px,5.6vw,68px);line-height:1.04;color:var(--forest);}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--gold-deep);}
+  .hero p{max-width:440px;margin:22px 0 32px;color:var(--ink-soft);font-size:16.5px;}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{background:var(--forest);color:var(--white);padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border-radius:3px;transition:background .3s ease, transform .3s ease;display:inline-block;border:none;cursor:pointer;}
+  .btn-primary:hover{background:var(--gold-deep);transform:translateY(-1px);}
+  .btn-ghost{border:1.5px solid var(--forest);color:var(--forest);padding:12.5px 26px;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border-radius:3px;transition:all .3s ease;display:inline-block;}
+  .btn-ghost:hover{background:var(--forest);color:var(--white);}
+
+  .hero-photo{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(155deg,var(--forest) 0%,var(--forest-soft) 60%,#3d7057 100%);}
+  .hero-photo .frame-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;}
+  .hero-photo .frame-label span{font-family:'Fraunces',serif;font-style:italic;color:rgba(255,255,255,0.85);font-size:15px;line-height:1.5;max-width:220px;}
+  .hero-photo .orchid-draw{position:absolute;bottom:-10px;right:-10px;width:62%;opacity:0.9;}
+  .hero-photo .orchid-draw path{stroke:rgba(217,184,114,0.85);}
+
+  .orchid-draw path{fill:none;stroke:var(--gold);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+  .orchid-draw .petal-fill{fill:rgba(217,184,114,0.08);stroke:var(--gold);}
+  .orchid-draw .sage-line{stroke:#7FAE8E;}
+  @media(prefers-reduced-motion:no-preference){
+    .orchid-draw path{stroke-dasharray:500;stroke-dashoffset:500;animation:draw 2.4s ease forwards;}
+    .orchid-draw path:nth-child(1){animation-delay:.1s;}
+    .orchid-draw path:nth-child(2){animation-delay:.4s;}
+    .orchid-draw path:nth-child(3){animation-delay:.7s;}
+    .orchid-draw path:nth-child(4){animation-delay:1s;}
+    .orchid-draw path:nth-child(5){animation-delay:1.2s;}
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .motif-mark path{fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ---------- TRUST STRIP ---------- */
+  .strip{background:var(--forest);padding:14px 0;overflow:hidden;white-space:nowrap;}
+  .strip-track{display:inline-block;animation:scroll 26s linear infinite;}
+  .strip span{display:inline-block;font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--paper);padding:0 26px;position:relative;}
+  .strip span::after{content:'✦';position:absolute;right:-3px;color:var(--gold);font-size:10px;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:100px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:52px;flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(30px,3.6vw,44px);color:var(--forest);}
+  .section-head p{max-width:340px;color:var(--ink-soft);font-size:15px;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--white);}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .service-card{background:var(--white);padding:38px 32px;transition:background .3s ease;}
+  .service-card:hover{background:var(--paper);}
+  .service-icon{width:42px;height:42px;color:var(--forest);margin-bottom:20px;}
+  .service-card h3{font-size:19px;color:var(--forest);margin-bottom:10px;}
+  .service-card p{font-size:14px;color:var(--ink-soft);margin:0 0 16px;}
+  .service-card .price{font-size:13px;font-weight:700;color:var(--gold-deep);text-transform:uppercase;letter-spacing:0.04em;}
+
+  /* ---------- ABOUT / GALLERY STRIP ---------- */
+  .about{background:var(--forest);color:var(--white);}
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about h2{color:var(--white);font-size:clamp(28px,3.6vw,42px);margin-bottom:20px;}
+  .about h2 em{color:var(--gold);font-style:italic;}
+  .about p{color:rgba(255,255,255,0.78);font-size:15.5px;margin-bottom:16px;max-width:460px;}
+  .stat-row{display:flex;gap:40px;margin-top:32px;flex-wrap:wrap;}
+  .stat b{font-family:'Fraunces',serif;font-size:32px;display:block;color:var(--gold);font-weight:500;}
+  .stat span{font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:rgba(255,255,255,0.6);}
+  .about-photo{aspect-ratio:1/1;border-radius:6px;background:linear-gradient(160deg,#2E5E48,#1a3a2c);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .about-photo svg{width:44%;opacity:.85;}
+
+  /* ---------- BOOKING ---------- */
+  .booking{background:var(--paper);}
+  .booking .wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:flex-start;}
+  .booking-info h2{font-size:clamp(28px,3.6vw,40px);color:var(--forest);margin-bottom:18px;}
+  .booking-info p{color:var(--ink-soft);font-size:15.5px;margin-bottom:28px;max-width:380px;}
+  .contact-block{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+  .contact-block .ico{width:40px;height:40px;border-radius:50%;background:var(--forest);color:var(--white);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .contact-block .ico svg{width:18px;height:18px;}
+  .contact-block b{display:block;font-family:'Fraunces',serif;font-size:17px;color:var(--forest);}
+  .contact-block span{font-size:13px;color:var(--ink-soft);}
+
+  .booking-form{background:var(--white);border:1px solid var(--line);border-radius:8px;padding:38px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--forest);}
+  .field input, .field select{
+    border:1.5px solid var(--line);border-radius:4px;padding:12px 14px;font-family:'Inter',sans-serif;
+    font-size:14.5px;color:var(--ink);background:var(--white);transition:border-color .25s ease;
+  }
+  .field input:focus, .field select:focus{outline:none;border-color:var(--forest);}
+  .booking-form .btn-primary{width:100%;padding:15px;font-size:13.5px;margin-top:6px;}
+  .form-note{font-size:12.5px;color:var(--ink-soft);margin-top:14px;text-align:center;}
+  .form-success{display:none;background:var(--forest-pale);border:1px solid var(--forest);color:var(--forest);padding:16px;border-radius:4px;font-size:14px;margin-top:16px;text-align:center;}
+  .form-success.show{display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--forest);color:var(--white);padding:64px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,0.15);}
+  .footer-brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:20px;margin-bottom:14px;color:var(--white);}
+  .footer-brand svg{width:20px;height:20px;color:var(--gold);}
+  .footer-col h4{font-size:12px;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;color:var(--gold);}
+  .footer-col p, .footer-col a{display:block;font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:8px;}
+  .footer-col a:hover{color:var(--gold);}
+  .footer-bottom{display:flex;justify-content:space-between;padding-top:22px;font-size:12.5px;color:rgba(255,255,255,0.55);flex-wrap:wrap;gap:10px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:920px){
+    nav ul{display:none;}
+    .nav-toggle{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-photo{order:-1;max-width:360px;margin:0 auto 8px;}
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .about .wrap{grid-template-columns:1fr;}
+    .about-photo{max-width:320px;margin:0 auto;}
+    .booking .wrap{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 20px;}
+    section{padding:68px 0;}
+    .service-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .hero{padding-top:132px;}
+  }
+  :focus-visible{outline:2px solid var(--forest);outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="orchid-mark" viewBox="0 0 60 60">
+    <path d="M30 52 C30 40 28 30 30 18" />
+    <path d="M30 30 C22 26 16 28 12 24" />
+    <path d="M30 30 C38 26 44 28 48 24" />
+    <path d="M30 18 C22 14 20 6 24 2 C28 6 30 12 30 18 C30 12 32 6 36 2 C40 6 38 14 30 18Z" />
+  </symbol>
+</svg>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 60 60"><use href="#orchid-mark" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>
+      White Orchid
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">Studio</a></li>
+        <li><a href="#book">Book</a></li>
+      </ul>
+    </nav>
+    <a href="#book" class="nav-cta">Book Appointment</a>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HOME / HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Unisex Salon & Skin Studio</div>
+        <h1 style="margin-top:14px;">Where every guest<br>gets the <em>same care.</em></h1>
+        <p>White Orchid brings together hair, skin, and nail care under one roof — for men, women, and children alike. Trained stylists, honest consultations, and treatments built around your hair and skin type, not your gender.</p>
+        <div class="hero-actions">
+          <a href="#book" class="btn-primary">Book an Appointment</a>
+          <a href="#services" class="btn-ghost">Explore Services</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <!-- Replace this block with a real studio photograph (e.g. hero-photo.jpg) for the live site -->
+        <div class="frame-label"><span>Add your studio's signature photograph here</span></div>
+        <svg class="orchid-draw" viewBox="0 0 340 420" fill="none">
+          <path d="M170 400 C168 320 172 260 170 200" class="sage-line"/>
+          <path d="M170 260 C210 245 230 260 250 240" />
+          <path d="M170 200 C168 170 150 150 150 120 C150 90 170 70 170 40" />
+          <path class="petal-fill" d="M170 100 C120 95 95 60 105 30 C140 30 165 65 170 100 C175 65 200 30 235 30 C245 60 220 95 170 100Z"/>
+          <path class="petal-fill" d="M170 100 C160 130 145 150 170 175 C195 150 180 130 170 100Z"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="strip-track">
+      <span>Hair Cutting — Men &amp; Women</span><span>Hair Colour</span><span>Keratin Treatment</span><span>Hair Care</span><span>Child Hair Care</span><span>Skin &amp; Facial Care</span><span>Nail Extensions</span>
+      <span>Hair Cutting — Men &amp; Women</span><span>Hair Colour</span><span>Keratin Treatment</span><span>Hair Care</span><span>Child Hair Care</span><span>Skin &amp; Facial Care</span><span>Nail Extensions</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">What We Offer</div>
+          <h2>Complete care,<br>every visit.</h2>
+        </div>
+        <p>From a child's first haircut to bridal skin prep, every service is delivered to the same standard, for every guest.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 4l10 10M16 4L9.5 10.5M6 8a2 2 0 100-4 2 2 0 000 4zm0 12a2 2 0 100-4 2 2 0 000 4zM8 18l9-9"/></svg>
+          <h3>Hair Cutting</h3>
+          <p>Precision cuts for men and women — every length, every texture, styled to suit you.</p>
+          <div class="price">All hair types</div>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M12 4v16M4 12h16"/></svg>
+          <h3>Hair Colour</h3>
+          <p>Global colour, highlights, and creative colour work using ammonia-free options.</p>
+          <div class="price">Custom shade consult</div>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c3 3 6 6 6 10a6 6 0 01-12 0c0-4 3-7 6-10z"/></svg>
+          <h3>Keratin Treatment</h3>
+          <p>Smoothening and creatine-based repair treatments for frizz-free, healthier hair.</p>
+          <div class="price">Long-lasting finish</div>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12c2-4 4-6 8-6s6 2 8 6c-2 4-4 6-8 6s-6-2-8-6z"/><circle cx="12" cy="12" r="2"/></svg>
+          <h3>Hair Care</h3>
+          <p>Scalp treatments, spa therapies, and deep-conditioning care for every hair type.</p>
+          <div class="price">Nourishing rituals</div>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.2"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+          <h3>Child Hair Care</h3>
+          <p>Gentle, patient haircuts and grooming for kids, in a calm, friendly space.</p>
+          <div class="price">First-cut friendly</div>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.6-9.4-9.1C1.3 8.8 3 5.5 6.3 5c2-.3 3.7 1 5.7 3 2-2 3.7-3.3 5.7-3 3.3.5 5 3.8 3.7 6.9C19 16.4 12 21 12 21z"/></svg>
+          <h3>Skin &amp; Facial Care</h3>
+          <p>Facials, brightening treatments, and de-tan therapy for every skin type.</p>
+          <div class="price">Consultation included</div>
+        </div>
+        <div class="service-card">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2c1 3 1 5 0 7-1-2-1-4 0-7zM7 8c2 1.5 3 3 3 5-2-.5-3.5-2-3-5zM17 8c-2 1.5-3 3-3 5 2-.5 3.5-2 3-5z"/><path d="M12 13v8"/></svg>
+          <h3>Nail Extensions</h3>
+          <p>Acrylic, gel, and poly-gel extensions, plus manicures and pedicures — all types.</p>
+          <div class="price">Shape &amp; design of choice</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow on-dark">The Studio</div>
+        <h2>One roof,<br>every kind of <em>care.</em></h2>
+        <p>White Orchid was built around a simple idea: a salon shouldn't need separate menus for men, women, and children. Every stylist is trained across hair types, skin types, and age groups — so your family can walk in together and leave together.</p>
+        <p>We keep the studio calm, the products good, and the consultations honest — if something won't suit you, we'll say so before we start.</p>
+        <div class="stat-row">
+          <div class="stat"><b>7</b><span>Service Categories</span></div>
+          <div class="stat"><b>All Ages</b><span>Men, Women &amp; Children</span></div>
+          <div class="stat"><b>1</b><span>Standard for Everyone</span></div>
+        </div>
+      </div>
+      <div class="about-photo">
+        <!-- Replace with a real photo of the studio or team -->
+        <svg class="orchid-draw" viewBox="0 0 200 260" fill="none">
+          <path d="M100 240 C98 190 102 150 100 100" class="sage-line"/>
+          <path d="M100 100 C70 90 55 60 65 35 C95 35 110 65 100 100 C110 65 125 35 155 35 C165 60 150 90 100 100Z"/>
+          <path d="M100 100 C92 125 82 140 100 160 C118 140 108 125 100 100Z"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="book" class="booking">
+    <div class="wrap">
+      <div class="booking-info">
+        <div class="eyebrow">Book a Chair</div>
+        <h2 style="margin-top:10px;">Reserve your appointment.</h2>
+        <p>Fill in the form and our team will confirm your slot by phone or WhatsApp. Prefer to talk it through first? Call us directly.</p>
+
+        <div class="contact-block">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.4-1.4a2 2 0 012.1-.4c.9.3 1.8.5 2.7.6a2 2 0 011.8 2.2z"/></svg></div>
+          <div><b>+91 84335 48432</b><span>Call or WhatsApp, 10am – 8pm</span></div>
+        </div>
+        <div class="contact-block">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><b>Visit the Studio</b><span>Address on request — add your salon location</span></div>
+        </div>
+        <div class="contact-block">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><b>Tue – Sun, 10am – 8pm</b><span>Closed Mondays</span></div>
+        </div>
+      </div>
+
+      <form class="booking-form" id="bookingForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">Full name</label>
+            <input type="text" id="fname" name="fname" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" required placeholder="10-digit mobile number">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Choose a service</option>
+              <option>Hair Cutting</option>
+              <option>Hair Colour</option>
+              <option>Keratin Treatment</option>
+              <option>Hair Care</option>
+              <option>Child Hair Care</option>
+              <option>Skin &amp; Facial Care</option>
+              <option>Nail Extensions</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="stylist">Preferred date</label>
+            <input type="date" id="stylist" name="date" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full">
+            <label for="time">Preferred time</label>
+            <input type="time" id="time" name="time" required>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">Request Appointment</button>
+        <div class="form-note">We'll confirm your slot by phone within a few hours.</div>
+        <div class="form-success" id="formSuccess">Thank you — your request has been received. We'll call you shortly to confirm.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 60 60"><use href="#orchid-mark" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
+          White Orchid
+        </div>
+        <p style="max-width:260px;">A unisex hair, skin, and nail studio. One standard of care, for every guest.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Hair Cutting</a>
+        <a href="#services">Hair Colour</a>
+        <a href="#services">Skin &amp; Facial Care</a>
+        <a href="#services">Nail Extensions</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Tue – Sun, 10am – 8pm</p>
+        <p>Closed Mondays</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+918433548432">+91 84335 48432</a>
+        <a href="#book">Book Appointment</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 White Orchid Salon. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const navUl = document.querySelector('nav ul');
+  toggle.addEventListener('click', () => {
+    const open = navUl.style.display === 'flex';
+    navUl.style.display = open ? 'none' : 'flex';
+    navUl.style.cssText += open ? '' : 'flex-direction:column;position:fixed;top:60px;left:0;right:0;background:#FFFFFF;padding:22px 32px;gap:18px;border-bottom:1px solid rgba(31,74,56,0.14);';
+  });
+
+  const form = document.getElementById('bookingForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    success.classList.add('show');
+    form.reset();
+    // Connect this form to your booking backend, email service, or WhatsApp API to receive real requests.
+  });
+</script>
+
+</body>
+</html>
